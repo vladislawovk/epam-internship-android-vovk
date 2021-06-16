@@ -17,16 +17,17 @@ class MealListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_meal_list)
 
         imageView.setOnClickListener {
-            startMealDetailsActivity(this)
+            startMealDetailsActivity(this, "USA")
         }
 
         textView.setOnClickListener {
-            startMealDetailsActivity(this)
+            startMealDetailsActivity(this, "MEXICAN")
         }
     }
 
-    private fun startMealDetailsActivity(context: Context) {
+    private fun startMealDetailsActivity(context: Context, mealCountry: String) {
         val intent = Intent(context, MealDetailsActivity::class.java)
+        intent.putExtra("MEAL_COUNTRY", mealCountry)
         startActivity(intent)
     }
 }
