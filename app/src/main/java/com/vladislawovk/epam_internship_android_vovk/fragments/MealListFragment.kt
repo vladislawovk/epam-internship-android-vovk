@@ -5,10 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.vladislawovk.epam_internship_android_vovk.Meal
-import com.vladislawovk.epam_internship_android_vovk.MyAdapter
+import com.vladislawovk.epam_internship_android_vovk.network.Meal
+import com.vladislawovk.epam_internship_android_vovk.MealRecyclerViewAdapter
 import com.vladislawovk.epam_internship_android_vovk.R
 
 class MealListFragment : Fragment() {
@@ -24,9 +23,8 @@ class MealListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val myRecyclerView = view.findViewById<RecyclerView>(R.id.my_recycler_view)
-        val myAdapter = MyAdapter()
-        myRecyclerView.layoutManager = LinearLayoutManager(view.context)
+        val myRecyclerView = view.findViewById<RecyclerView>(R.id.meal_recycler_view)
+        val myAdapter = MealRecyclerViewAdapter()
         myRecyclerView.adapter = myAdapter
 
         myAdapter.setMealList(

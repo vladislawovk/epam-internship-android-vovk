@@ -7,12 +7,12 @@
     tools:context=".fragments.MealListFragment">
 
     <ImageView
-        android:id="@+id/meal_small_image"
+        android:id="@+id/meal_list_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/normal_100"
         android:layout_marginTop="@dimen/normal_100"
-        android:src="@drawable/meal_list_image1"
+        android:src="@drawable/meal_list_bottom_image1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,9 +26,9 @@
         android:layout_marginEnd="@dimen/normal_100"
         app:layout_constrainedWidth="true"
         android:text="Soy-Glazed Meatloaves with Wasabi Mashed Potatoes Roasted Carrots"
-        app:layout_constraintBottom_toBottomOf="@+id/meal_small_image"
+        app:layout_constraintBottom_toBottomOf="@+id/meal_list_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/meal_small_image"
-        app:layout_constraintTop_toTopOf="@+id/meal_small_image" />
+        app:layout_constraintStart_toEndOf="@id/meal_list_image"
+        app:layout_constraintTop_toTopOf="@+id/meal_list_image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
