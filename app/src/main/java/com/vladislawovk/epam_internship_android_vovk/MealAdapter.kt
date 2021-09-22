@@ -8,21 +8,22 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.vladislawovk.epam_internship_android_vovk.network.Meal
 
-class MealRecyclerViewAdapter : RecyclerView.Adapter<MealRecyclerViewAdapter.MyMealViewHolder>() {
+class MealAdapter(private val clickListener: OnMealClickListener) :
+    RecyclerView.Adapter<MealAdapter.MealViewHolder>() {
 
     private val mealList: MutableList<Meal> = mutableListOf()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyMealViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
             R.layout.meal_list_meal_item,
             parent,
             false
         )
-        return MyMealViewHolder(view)
+        return MealViewHolder(view, clickListener)
     }
 
-    override fun onBindViewHolder(holderMeal: MyMealViewHolder, position: Int) {
-        holderMeal.bind(model = mealList[position])
+    override fun onBindViewHolder(mealHolder: MealViewHolder, position: Int) {
+        mealHolder.bind(model = mealList[position])
     }
 
     override fun getItemCount(): Int = mealList.size
@@ -33,13 +34,23 @@ class MealRecyclerViewAdapter : RecyclerView.Adapter<MealRecyclerViewAdapter.MyM
         notifyDataSetChanged()
     }
 
-    class MyMealViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class MealViewHolder(
+        view: View,
+        private val clickListener: OnMealClickListener
+    ) : RecyclerView.ViewHolder(view) {
 
         private val mealListText: TextView = view.findViewById(R.id.meal_list_text)
         private val mealListImage: ImageView = itemView.findViewById(R.id.meal_list_image)
 
         fun bind(model: Meal) {
-            mealListText.text = model.mealText
+//            mealListText.text = model.mealText
+            itemView.setOnClickListener {
+                clickListener.onMealClick(model)
+            }
         }
+    }
+
+    interface OnMealClickListener {
+        fun onMealClick(meal: Meal)
     }
 }
